@@ -5,6 +5,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Building2, User, Lock, ArrowLeft } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
+import logo from '../assets/logo2.png';
 
 interface LoginExternoProps {
   onNavigate: (page: any) => void;
@@ -41,7 +42,7 @@ export function LoginExterno({ onNavigate }: LoginExternoProps) {
         {/* Logo */}
         <div className="text-center">
           <div className="flex justify-center">
-            <img src="/src/assets/logo2.png" alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
+            <img src={logo} alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
           </div>
           <h2 className="text-lg text-gray-900">
             Prefeitura de Aratuípe

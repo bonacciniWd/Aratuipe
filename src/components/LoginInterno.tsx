@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog";
+import logo from '../assets/logo2.png';
 
 interface LoginInternoProps {
   onLogin: () => void;
@@ -33,7 +34,7 @@ export function LoginInterno({ onLogin }: LoginInternoProps) {
       <Card className="w-full max-w-md mx-4">
         <CardHeader className="space-y-4 text-center">
           <div className="flex justify-center">
-            <img src="/src/assets/logo2.png" alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
+            <img src={logo} alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
           </div>
           <div>
             <CardTitle className="text-2xl">Prefeitura Municipal de Aratuípe</CardTitle>

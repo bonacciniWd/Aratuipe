@@ -5,6 +5,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Building2, Search, FileText, AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
+import logo from '../assets/logo2.png';
 
 interface ConsultaPublicaProps {
   onNavigate: (page: any) => void;
@@ -26,7 +27,7 @@ export function ConsultaPublica({ onNavigate }: ConsultaPublicaProps) {
         {/* Header */}
         <div className="text-center">
          <div className="flex justify-center">
-            <img src="/src/assets/logo2.png" alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
+            <img src={logo} alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
           </div>
           <h1 className="text-2xl text-gray-900 mb-2">
             Prefeitura de Aratuípe

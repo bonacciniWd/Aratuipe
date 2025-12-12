@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
+import logo from '../assets/logo2.png';
 
 type Page = 'dashboard' | 'protocolo' | 'lista' | 'detalhe' | 'assinatura' | 'config' | 'workflow' | 'parecer' | 'ouvidoria' | 'esic' | 'comunicacao' | 'pad';
 
@@ -63,7 +64,7 @@ export function Sidebar({ currentPage, onNavigate, onLogout }: SidebarProps) {
       <div className="p-6 border-b bg-blue-100 border-gray-200">
         <div className="flex items-center gap-3">
           <div className="flex justify-center">
-            <img src="/src/assets/logo2.png" alt="Logo Prefeitura" className="h-10 w-10"  />
+            <img src={logo} alt="Logo Prefeitura" className="h-10 w-10"  />
           </div>
           <div>
             <div className="text-sm text-gray-900">Prefeitura de</div>
