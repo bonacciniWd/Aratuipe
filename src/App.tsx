@@ -11,12 +11,18 @@ import { GestaoCredenciais } from './components/GestaoCredenciais';
 import { ConsultaPublica } from './components/ConsultaPublica';
 import { ResultadoConsulta } from './components/ResultadoConsulta';
 import { LoginExterno } from './components/LoginExterno';
+import { WorkflowBuilder } from './components/WorkflowBuilder';
+import { ModuloParecer } from './components/ModuloParecer';
+import { ModuloOuvidoria } from './components/ModuloOuvidoria';
+import { ModuloESIC } from './components/ModuloESIC';
+import { ComunicacaoInterna } from './components/ComunicacaoInterna';
+import { ModuloPAD } from './components/ModuloPAD';
 import { Button } from './components/ui/button';
 import { Toaster } from './components/ui/sonner';
 import { Monitor, Smartphone } from 'lucide-react';
 
 type View = 'interno' | 'externo';
-type InternoPage = 'login' | 'dashboard' | 'protocolo' | 'lista' | 'detalhe' | 'assinatura' | 'config' | 'cadastro-usuario' | 'gestao-credenciais';
+type InternoPage = 'login' | 'dashboard' | 'protocolo' | 'lista' | 'detalhe' | 'assinatura' | 'config' | 'cadastro-usuario' | 'gestao-credenciais' | 'workflow' | 'parecer' | 'ouvidoria' | 'esic' | 'comunicacao' | 'pad';
 type ExternoPage = 'consulta' | 'resultado' | 'login';
 
 export default function App() {
@@ -46,9 +52,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-[20vh] bg-gray-50">
       {/* View Switcher */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2 bg-white p-2 rounded-lg shadow-lg border border-gray-200">
+      <div className="fixed bottom-0 right-4 z-50 flex gap-2 p-2 rounded-lg shadow-lg border border-gray-200">
         <Button
           variant={view === 'interno' ? 'default' : 'outline'}
           size="sm"
@@ -119,6 +125,42 @@ export default function App() {
           )}
           {isLoggedIn && internoPage === 'gestao-credenciais' && (
             <GestaoCredenciais 
+              onNavigate={setInternoPage}
+              onLogout={handleLogoutInterno}
+            />
+          )}
+          {isLoggedIn && internoPage === 'workflow' && (
+            <WorkflowBuilder 
+              onNavigate={setInternoPage}
+              onLogout={handleLogoutInterno}
+            />
+          )}
+          {isLoggedIn && internoPage === 'parecer' && (
+            <ModuloParecer 
+              onNavigate={setInternoPage}
+              onLogout={handleLogoutInterno}
+            />
+          )}
+          {isLoggedIn && internoPage === 'ouvidoria' && (
+            <ModuloOuvidoria 
+              onNavigate={setInternoPage}
+              onLogout={handleLogoutInterno}
+            />
+          )}
+          {isLoggedIn && internoPage === 'esic' && (
+            <ModuloESIC 
+              onNavigate={setInternoPage}
+              onLogout={handleLogoutInterno}
+            />
+          )}
+          {isLoggedIn && internoPage === 'comunicacao' && (
+            <ComunicacaoInterna 
+              onNavigate={setInternoPage}
+              onLogout={handleLogoutInterno}
+            />
+          )}
+          {isLoggedIn && internoPage === 'pad' && (
+            <ModuloPAD 
               onNavigate={setInternoPage}
               onLogout={handleLogoutInterno}
             />

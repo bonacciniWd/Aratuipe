@@ -3,15 +3,25 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Building2, Lock, User } from 'lucide-react';
+import { Building2, Lock, User, Info, CheckCircle2, AlertTriangle, ArrowRight } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 
 interface LoginInternoProps {
   onLogin: () => void;
 }
 
 export function LoginInterno({ onLogin }: LoginInternoProps) {
-  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [showWelcomeModal, setShowWelcomeModal] = useState(true);
+  const [welcomeStep, setWelcomeStep] = useState(1);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,9 +33,7 @@ export function LoginInterno({ onLogin }: LoginInternoProps) {
       <Card className="w-full max-w-md mx-4">
         <CardHeader className="space-y-4 text-center">
           <div className="flex justify-center">
-            <div className="bg-blue-600 p-4 rounded-full">
-              <Building2 className="size-12 text-white" />
-            </div>
+            <img src="/src/assets/logo2.png" alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
           </div>
           <div>
             <CardTitle className="text-2xl">Prefeitura Municipal de Aratuípe</CardTitle>
@@ -37,15 +45,15 @@ export function LoginInterno({ onLogin }: LoginInternoProps) {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="cpf">CPF/CNPJ</Label>
+              <Label htmlFor="email">E-mail Corporativo</Label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
                 <Input
-                  id="cpf"
-                  type="text"
-                  placeholder="000.000.000-00"
-                  value={cpf}
-                  onChange={(e) => setCpf(e.target.value)}
+                  id="email"
+                  type="email"
+                  placeholder="seu.email@aratuipe.gov.br"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="pl-10"
                   required
                 />
@@ -104,6 +112,66 @@ export function LoginInterno({ onLogin }: LoginInternoProps) {
           </div>
         </CardContent>
       </Card>
+
+      <Dialog open={showWelcomeModal} onOpenChange={setShowWelcomeModal}>
+        <DialogContent className="sm:max-w-[500px]">
+          {welcomeStep === 1 ? (
+            <>
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2 text-xl">
+                  <Building2 className="size-6 text-blue-600" />
+                  Bem-vindo à Proposta Técnica
+                </DialogTitle>
+                <DialogDescription className="pt-4 text-base text-gray-600">
+                  Esta aplicação é uma demonstração funcional desenvolvida para a <strong>Licitação do Município de Aratuípe</strong>.
+                  <br /><br />
+                  O sistema apresenta uma solução completa de <strong>SaaS para Gestão Documental e Processos</strong>, focada em eficiência, transparência e conformidade legal.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter className="mt-6">
+                <Button onClick={() => setWelcomeStep(2)} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700">
+                  Próximo
+                  <ArrowRight className="size-4 ml-2" />
+                </Button>
+              </DialogFooter>
+            </>
+          ) : (
+            <>
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2 text-xl">
+                  <Info className="size-6 text-blue-600" />
+                  Credenciais de Acesso
+                </DialogTitle>
+                <DialogDescription className="pt-4 space-y-4">
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                    <p className="font-medium text-blue-900 mb-2">Utilize para testar:</p>
+                    <div className="space-y-1 text-sm text-blue-800">
+                      <p><span className="font-semibold">E-mail:</span> secretaria@aratauipe.gov.br</p>
+                      <p><span className="font-semibold">Senha:</span> 123456</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3 text-amber-700 bg-amber-50 p-3 rounded-md text-sm border border-amber-100">
+                    <AlertTriangle className="size-5 flex-shrink-0 mt-0.5" />
+                    <p>
+                      Este é um ambiente de demonstração com <strong>dados mockados</strong> (fictícios) para fins de avaliação técnica.
+                    </p>
+                  </div>
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter className="mt-6">
+                <Button 
+                  onClick={() => setShowWelcomeModal(false)} 
+                  className="w-full sm:w-auto bg-green-600 hover:bg-green-700"
+                >
+                  <CheckCircle2 className="size-4 mr-2" />
+                  Estou de acordo
+                </Button>
+              </DialogFooter>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

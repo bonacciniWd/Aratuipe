@@ -40,10 +40,8 @@ export function LoginExterno({ onNavigate }: LoginExternoProps) {
 
         {/* Logo */}
         <div className="text-center">
-          <div className="flex justify-center mb-4">
-            <div className="bg-blue-600 p-3 rounded-full">
-              <Building2 className="size-8 text-white" />
-            </div>
+          <div className="flex justify-center">
+            <img src="/src/assets/logo2.png" alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
           </div>
           <h2 className="text-lg text-gray-900">
             Prefeitura de Aratuípe

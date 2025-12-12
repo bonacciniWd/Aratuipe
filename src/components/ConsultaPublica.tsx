@@ -25,10 +25,8 @@ export function ConsultaPublica({ onNavigate }: ConsultaPublicaProps) {
       <div className="w-full space-y-6">
         {/* Header */}
         <div className="text-center">
-          <div className="flex justify-center mb-4">
-            <div className="bg-blue-600 p-4 rounded-full">
-              <Building2 className="size-10 text-white" />
-            </div>
+         <div className="flex justify-center">
+            <img src="/src/assets/logo2.png" alt="Logo Prefeitura" className="h-12 w-12" style={{ width: '98px', height: '98px' }} />
           </div>
           <h1 className="text-2xl text-gray-900 mb-2">
             Prefeitura de Aratuípe
